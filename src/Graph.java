@@ -160,6 +160,9 @@ public class Graph {
                             } else
                                 System.out.println("ws");
                         }
+                        else{
+                            DFSUtil(item, visited, nodes1);
+                        }
                     }
                     else{
                         Node nodex;
@@ -182,24 +185,27 @@ public class Graph {
                             else if(nodex.getColor() == Color.WHITE){
                                 if(!tmp.empty()){
                                     Node nodey = tmp.pop();
-                                    Node nodea = tmp.pop();
-                                    if(nodea.getY() == nodey.getY()){
-                                        if(item.getY() == nodex.getY())
-                                            continue;
-                                        else
+                                    if(!tmp.empty()) {
+                                        Node nodea = tmp.pop();
+                                        if (nodea.getY() == nodey.getY()) {
+                                            if (item.getY() == nodex.getY())
+                                                continue;
+                                            else
+                                                DFSUtil(item, visited, nodes1);
+                                        } else if (nodea.getX() == nodey.getX()) {
+                                            if (item.getX() == nodex.getX())
+                                                continue;
+                                            else
+                                                DFSUtil(item, visited, nodes1);
+                                        } else {
                                             DFSUtil(item, visited, nodes1);
+                                        }
                                     }
-                                    else if(nodea.getX() == nodey.getX()){
-                                        if(item.getX() == nodex.getX())
-                                            continue;
-                                        else
-                                            DFSUtil(item, visited, nodes1);
-                                    }
-                                    else{
+                                    else
                                         DFSUtil(item, visited, nodes1);
-                                    }
-
                                 }
+                                else
+                                    DFSUtil(item, visited, nodes1);
                             }
 
                             else
