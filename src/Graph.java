@@ -1,17 +1,24 @@
 import com.sun.org.apache.xpath.internal.operations.Bool;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.*;
 
 public class Graph {
     private HashMap<Node, ArrayList<Node>> nodes;
     private int n;
-
+    private BufferedWriter writer;
    public Graph(int n){
        this.n = n;
        nodes = new HashMap<>();
+       try{
+            writer = new BufferedWriter(new FileWriter("C:\\Users\\Niyazi\\Desktop\\results.txt"));
+       }
+       catch (Exception ex){
+           ex.printStackTrace();
+       }
    }
 
    public void addEdge(Node node, Node neighbour){
@@ -54,7 +61,24 @@ public class Graph {
            x+=y.printNode()+"->";
        });
        System.out.println(x);
+       try {
+           writer.write(x);
+           writer.newLine();
+       } catch (IOException e) {
+           e.printStackTrace();
+       }
    }
+
+
+    public boolean checkSolution(Stack<Node> st){
+        Stack<Node> tmp = (Stack<Node>) st.clone();
+
+        tmp.forEach(y->{
+
+        });
+        return false;
+    }
+
    public void DFSUtil(Node startNode,HashMap<Node, Boolean> visited, Stack<Node> nodes1){
        ArrayList<Node> neighbours = (ArrayList<Node>) nodes.get(startNode);
        visited.put(startNode, true);
@@ -66,73 +90,105 @@ public class Graph {
            if(!visited.get(item)) {
 
 
-               if(startNode.getY() == 0 || startNode.getY() == n-1){
-
-                   if(startNode.getColor() == Color.WHITE){
-                        if(startNode.getX() == 0 && startNode.getX() == n-1){
-                            continue;
-                        }
-                        else{
-                            if(item.getY() == startNode.getY() && (item.getX() == startNode.getX() - 1 || item.getX() == startNode.getX() +1 )){
-                                DFSUtil(item, visited,nodes1);
-                            }
-                        }
-                   }
-                   else { DFSUtil(item,visited,nodes1);}
-               }
-
-               //Yatayda köşeler kontrol
-               else if(startNode.getX() == 0 || startNode.getX() == n-1){
-
-                  if(startNode.getColor() == Color.WHITE){
-                      if(startNode.getY() ==0 || startNode.getY() == n-1 )
-                          continue;
-                      if (startNode.getX() == item.getX() && (startNode.getY() == item.getY() -1 || startNode.getY() == item.getY() + 1) ){
-                            DFSUtil(item,visited,nodes1);
-                      }
-                  }
-                  else
-                     DFSUtil(item,visited,nodes1);
-               }
-
-               else {
+               //Eksiklik var
 
                     if(startNode.getColor() == Color.BLACK){
+                        tmp = (Stack<Node>) nodes1.clone();
                         tmp.pop();
-                        Node nodex = tmp.pop();
-                        if(nodex.getX() == startNode.getX()){
-                            if(item.getX() == startNode.getX())
-                                continue;
-                            else
-                                DFSUtil(item,visited,nodes1);
+                        //Bir onceki
+                        Node nodex;
+                        if(!tmp.empty()){
+                            nodex = tmp.pop();
+                            if(nodex.getX() == startNode.getX()){
+                                if(item.getX() == startNode.getX())
+                                    continue;
+                                else
+                                    DFSUtil(item,visited,nodes1);
+                            }
+                            else if(nodex.getY() == startNode.getY()){
+                                if(item.getY() == startNode.getY())
+                                    continue;
+                                else
+                                    DFSUtil(item,visited,nodes1);
+                            }
                         }
-                        else if(nodex.getY() == startNode.getY()){
-                            if(item.getY() == startNode.getY())
-                                continue;
-                            else
-                                DFSUtil(item,visited,nodes1);
+                        else{
+                            DFSUtil(item, visited, nodes1);
                         }
 
                     }
                     else if(startNode.getColor() == Color.WHITE){
+                        tmp = (Stack<Node>) nodes1.clone();
                         tmp.pop();
                         Node nodex = tmp.pop();
                         if(nodex.getX() == startNode.getX()){
                             if(item.getX() == startNode.getX())
                                 DFSUtil(item,visited,nodes1);
-                            else
+                            else{
+                                System.out.println("girdiilk");
                                 continue;
+
+                            }
                         }
-                        if(nodex.getY() == startNode.getY()){
+                        else if(nodex.getY() == startNode.getY()){
                             if(item.getY() == startNode.getY())
                                 DFSUtil(item,visited,nodes1);
-                            else
+                            else{
+                                System.out.println("girdi");
                                 continue;
+
+                            }
                         }
+                        else
+                            System.out.println("ws");
                     }
-                    else
-                        DFSUtil(item,visited,nodes1);
-               }
+                    else{
+                        Node nodex;
+                        tmp = (Stack<Node>) nodes1.clone();
+                        tmp.pop();
+                        if(!tmp.empty()){
+                            nodex = tmp.pop();
+                            if(nodex.getColor() == Color.BLACK){
+                                if (nodex.getX() == startNode.getX()){
+                                    if(item.getX() == startNode.getX()){ // Bu ifler düzeltilecek.
+                                        DFSUtil(item, visited, nodes1);
+                                    }
+                                }
+                                else if (nodex.getY() == startNode.getY()){
+                                    if(item.getY() == startNode.getY()){
+                                        DFSUtil(item, visited, nodes1);
+                                    }
+                                }
+                            }
+                            else if(nodex.getColor() == Color.WHITE){
+                                if(!tmp.empty()){
+                                    Node nodey = tmp.pop();
+                                    Node nodea = tmp.pop();
+                                    if(nodea.getX() != nodey.getX()){
+                                        if(startNode.getY() == item.getY() )
+                                            DFSUtil(item, visited, nodes1);
+                                    }
+                                    else if(nodea.getY() != nodey.getY()){
+                                        if(startNode.getX() == item.getX())
+                                            DFSUtil(item, visited, nodes1);
+                                    }
+                                    else{
+                                        //Kırılmıştır istediği gibi gitsin
+                                        DFSUtil(item, visited, nodes1);
+                                    }
+                                }
+                                else
+                                    DFSUtil(startNode, visited, nodes1);
+                            }
+                            else
+                                DFSUtil(item, visited, nodes1);
+                        }
+                        else{
+                            DFSUtil(item,visited,nodes1);
+                        }
+
+
+                    }
 
            }
 
