@@ -69,13 +69,35 @@ public class Graph {
        }
    }
 
-
+    int size = 0;
     public boolean checkSolution(Stack<Node> st){
         Stack<Node> tmp = (Stack<Node>) st.clone();
-
+        x="";
+        size = 0;
         tmp.forEach(y->{
-
+            size = y.getColor() != Color.EMPTY? size+1: size;
         });
+        if (size == 7){
+            Node start = tmp.firstElement();
+            Node end = tmp.lastElement();
+
+            if((end.getX() == start.getX() - 1 || end.getX() == start.getX() + 1) && end.getY() == start.getY() ){
+                tmp.forEach(y->{
+                    x+= y.printNode();
+                });
+            }
+            else if((end.getY() == start.getY() -1 || end.getY() == start.getY() +1 ) && end.getX() == start.getX()){
+                tmp.forEach(y->{
+                    x+= y.printNode();
+                });
+            }
+        }
+        if(x == ""){
+        }
+        else{
+            System.out.println(x);
+        }
+
         return false;
     }
 
@@ -86,11 +108,9 @@ public class Graph {
        nodes1.push(startNode);
        Stack<Node> tmp = (Stack<Node>) nodes1.clone();
        yazdir(nodes1);
+        //checkSolution(nodes1);
        for (Node item: neighbours ){
            if(!visited.get(item)) {
-
-
-               //Eksiklik var
 
                     if(startNode.getColor() == Color.BLACK){
                         tmp = (Stack<Node>) nodes1.clone();
@@ -120,27 +140,26 @@ public class Graph {
                     else if(startNode.getColor() == Color.WHITE){
                         tmp = (Stack<Node>) nodes1.clone();
                         tmp.pop();
-                        Node nodex = tmp.pop();
-                        if(nodex.getX() == startNode.getX()){
-                            if(item.getX() == startNode.getX())
-                                DFSUtil(item,visited,nodes1);
-                            else{
-                                System.out.println("girdiilk");
-                                continue;
+                        Node nodex;
+                        if(!tmp.empty()) {
+                            nodex = tmp.pop();
+                            if (nodex.getX() == startNode.getX()) {
+                                if (item.getX() == startNode.getX())
+                                    DFSUtil(item, visited, nodes1);
+                                else {
+                                    continue;
 
-                            }
-                        }
-                        else if(nodex.getY() == startNode.getY()){
-                            if(item.getY() == startNode.getY())
-                                DFSUtil(item,visited,nodes1);
-                            else{
-                                System.out.println("girdi");
-                                continue;
+                                }
+                            } else if (nodex.getY() == startNode.getY()) {
+                                if (item.getY() == startNode.getY())
+                                    DFSUtil(item, visited, nodes1);
+                                else {
+                                    continue;
 
-                            }
+                                }
+                            } else
+                                System.out.println("ws");
                         }
-                        else
-                            System.out.println("ws");
                     }
                     else{
                         Node nodex;
@@ -164,22 +183,25 @@ public class Graph {
                                 if(!tmp.empty()){
                                     Node nodey = tmp.pop();
                                     Node nodea = tmp.pop();
-                                    if(nodea.getX() != nodey.getX()){
-                                        if(startNode.getY() == item.getY() )
+                                    if(nodea.getY() == nodey.getY()){
+                                        if(item.getY() == nodex.getY())
+                                            continue;
+                                        else
                                             DFSUtil(item, visited, nodes1);
                                     }
-                                    else if(nodea.getY() != nodey.getY()){
-                                        if(startNode.getX() == item.getX())
+                                    else if(nodea.getX() == nodey.getX()){
+                                        if(item.getX() == nodex.getX())
+                                            continue;
+                                        else
                                             DFSUtil(item, visited, nodes1);
                                     }
                                     else{
-                                        //Kırılmıştır istediği gibi gitsin
                                         DFSUtil(item, visited, nodes1);
                                     }
+
                                 }
-                                else
-                                    DFSUtil(startNode, visited, nodes1);
                             }
+
                             else
                                 DFSUtil(item, visited, nodes1);
                         }
