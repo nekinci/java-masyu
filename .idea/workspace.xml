@@ -2,7 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2d685f64-d6d2-4802-bfa4-d602f6fa7095" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MasyuGame/Graph.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MasyuGame/Graph.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Game.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,12 +23,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Graph.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="537">
-              <caret line="204" column="69" selection-start-line="204" selection-start-column="69" selection-end-line="204" selection-end-column="69" />
+            <state relative-caret-position="433">
+              <caret line="226" column="52" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#8446#8447#0" expanded="true" />
-                <element signature="e#8489#8490#0" expanded="true" />
+                <element signature="e#3312#4464#1" />
+                <element signature="e#3522#4325#1" />
+                <element signature="e#4256#4343#1" />
+                <element signature="e#4431#5451#1" />
+                <element signature="e#4605#5429#1" />
+                <element signature="e#11046#11047#0" expanded="true" />
+                <element signature="e#11089#11090#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -33,11 +42,11 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+            <state relative-caret-position="488">
+              <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
               <folding>
-                <element signature="e#892#893#0" expanded="true" />
-                <element signature="e#920#921#0" expanded="true" />
+                <element signature="e#1284#1285#0" expanded="true" />
+                <element signature="e#1312#1313#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,8 +55,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+            <state relative-caret-position="170">
+              <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
             </state>
           </provider>
         </entry>
@@ -72,6 +81,7 @@
         <option value="$PROJECT_DIR$/src/Renk.java" />
         <option value="$PROJECT_DIR$/src/Color.java" />
         <option value="$PROJECT_DIR$/src/Node.java" />
+        <option value="$PROJECT_DIR$/src/SolutionNode.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
         <option value="$PROJECT_DIR$/src/Game.java" />
         <option value="$PROJECT_DIR$/src/Graph.java" />
@@ -113,7 +123,8 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577205277028" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1577265019486" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2018.3.4\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RunDashboard">
@@ -163,18 +174,18 @@
       <workItem from="1576760924346" duration="4068000" />
       <workItem from="1576828467042" duration="4861000" />
       <workItem from="1576911262186" duration="52405000" />
-      <workItem from="1577107183727" duration="26798000" />
+      <workItem from="1577107183727" duration="44900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115265000" />
+    <option name="totallyTimeSpent" value="133367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.27132195" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.2707889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -183,7 +194,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.38244852" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.38244852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -191,7 +202,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32936078" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32936078" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32936078" />
       <window_info anchor="bottom" id="TypeScript" order="13" />
@@ -207,7 +218,7 @@
       <window_info anchor="right" id="Database" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.27132195" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2707889" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -244,18 +255,6 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/Graph.java</url>
-          <line>103</line>
-          <properties class="Graph" method="DFSUtil">
-            <option name="EMULATED" value="true" />
-          </properties>
-          <option name="timeStamp" value="24" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="this" />
@@ -302,32 +301,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/SolutionNode.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
+        <state>
+          <caret lean-forward="true" />
+          <folding>
+            <element signature="e#133#134#0" expanded="true" />
+            <element signature="e#162#163#0" expanded="true" />
+            <element signature="e#197#198#0" expanded="true" />
+            <element signature="e#225#226#0" expanded="true" />
+            <element signature="e#247#248#0" expanded="true" />
+            <element signature="e#275#276#0" expanded="true" />
+            <element signature="e#312#313#0" expanded="true" />
+            <element signature="e#344#345#0" expanded="true" />
+            <element signature="e#390#391#0" expanded="true" />
+            <element signature="e#424#425#0" expanded="true" />
+            <element signature="e#466#467#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#516#517#0" expanded="true" />
+            <element signature="e#557#558#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+        <state relative-caret-position="488">
+          <caret line="36" column="28" selection-start-line="36" selection-start-column="28" selection-end-line="36" selection-end-column="28" />
           <folding>
-            <element signature="e#892#893#0" expanded="true" />
-            <element signature="e#920#921#0" expanded="true" />
+            <element signature="e#1284#1285#0" expanded="true" />
+            <element signature="e#1312#1313#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="102" selection-start-line="10" selection-start-column="102" selection-end-line="10" selection-end-column="102" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Graph.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="537">
-          <caret line="204" column="69" selection-start-line="204" selection-start-column="69" selection-end-line="204" selection-end-column="69" />
+        <state relative-caret-position="433">
+          <caret line="226" column="52" selection-start-line="226" selection-start-column="52" selection-end-line="226" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#8446#8447#0" expanded="true" />
-            <element signature="e#8489#8490#0" expanded="true" />
+            <element signature="e#3312#4464#1" />
+            <element signature="e#3522#4325#1" />
+            <element signature="e#4256#4343#1" />
+            <element signature="e#4431#5451#1" />
+            <element signature="e#4605#5429#1" />
+            <element signature="e#11046#11047#0" expanded="true" />
+            <element signature="e#11089#11090#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -1,7 +1,5 @@
-import com.sun.org.apache.xpath.internal.operations.Bool;
 
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.*;
@@ -77,19 +75,23 @@ public class Graph {
         tmp.forEach(y->{
             size = y.getColor() != Color.EMPTY? size+1: size;
         });
-        if (size == 7){
+        if (size == 9){
             Node start = tmp.firstElement();
             Node end = tmp.lastElement();
-
+            Node beforeEnd = tmp.get(tmp.size() - 1 - 1);
             if((end.getX() == start.getX() - 1 || end.getX() == start.getX() + 1) && end.getY() == start.getY() ){
-                tmp.forEach(y->{
-                    x+= y.printNode();
-                });
+                if (beforeEnd.getY() == end.getY()){
+                    tmp.forEach(y->{
+                        x+= y.printNode();
+                    });
+                }
             }
             else if((end.getY() == start.getY() -1 || end.getY() == start.getY() +1 ) && end.getX() == start.getX()){
-                tmp.forEach(y->{
-                    x+= y.printNode();
-                });
+               if(beforeEnd.getX() == end.getX()){
+                   tmp.forEach(y->{
+                       x+= y.printNode();
+                   });
+               }
             }
         }
         if(x == ""){
@@ -101,14 +103,24 @@ public class Graph {
         return false;
     }
 
+
+    public void check(Stack<Node> st){
+        Stack<Node> tmp = (Stack<Node>) st.clone();
+
+        for (int i = 0; i < tmp.size(); i++){
+            Node node = tmp.get(i);
+        }
+
+    }
+
    public void DFSUtil(Node startNode,HashMap<Node, Boolean> visited, Stack<Node> nodes1){
        ArrayList<Node> neighbours = (ArrayList<Node>) nodes.get(startNode);
        visited.put(startNode, true);
        //visitedYazdir(visited);
        nodes1.push(startNode);
        Stack<Node> tmp = (Stack<Node>) nodes1.clone();
-       yazdir(nodes1);
-        //checkSolution(nodes1);
+       //yazdir(nodes1);
+        checkSolution(nodes1);
        for (Node item: neighbours ){
            if(!visited.get(item)) {
 
@@ -188,15 +200,35 @@ public class Graph {
                                     if(!tmp.empty()) {
                                         Node nodea = tmp.pop();
                                         if (nodea.getY() == nodey.getY()) {
+                                            if (nodex.getY() != nodey.getY())
+                                                continue;
                                             if (item.getY() == nodex.getY())
                                                 continue;
-                                            else
-                                                DFSUtil(item, visited, nodes1);
-                                        } else if (nodea.getX() == nodey.getX()) {
+                                            else {
+                                                if(item.getColor() == Color.BLACK){
+                                                    if(nodex.getX() == startNode.getX()){
+                                                        if(item.getY() == startNode.getY())
+                                                            continue;
+                                                        else
+                                                            DFSUtil(item,visited, nodes1);
+                                                    }
+                                                }
+                                                else
+                                                    DFSUtil(item, visited, nodes1);
+                                            }
+                                        }
+                                        else if (nodea.getX() == nodey.getX()) {
+                                            if(nodex.getX() != nodey.getX())
+                                                continue;
                                             if (item.getX() == nodex.getX())
                                                 continue;
-                                            else
-                                                DFSUtil(item, visited, nodes1);
+                                            else {
+                                                if(item.getColor() == Color.BLACK){
+                                                    
+                                                }
+                                                else
+                                                    DFSUtil(item, visited, nodes1);
+                                            }
                                         } else {
                                             DFSUtil(item, visited, nodes1);
                                         }
@@ -208,8 +240,29 @@ public class Graph {
                                     DFSUtil(item, visited, nodes1);
                             }
 
-                            else
-                                DFSUtil(item, visited, nodes1);
+                            else {
+
+                                if(item.getColor() == Color.BLACK){
+                                    if(item.getY() == startNode.getY()){
+                                        if(nodex.getY() == startNode.getY()){
+                                            DFSUtil(item,visited,nodes1);
+                                        }
+                                        else
+                                            continue;
+                                    }
+                                    else if(item.getX() == startNode.getX()){
+                                        if(nodex.getX() == startNode.getX()){
+                                            DFSUtil(item,visited,nodes1);
+                                        }
+                                        else
+                                            continue;
+                                    }
+                                    else
+                                        DFSUtil(item,visited,nodes1);
+                                }
+                                else
+                                    DFSUtil(item, visited, nodes1);
+                            }
                         }
                         else{
                             DFSUtil(item,visited,nodes1);
