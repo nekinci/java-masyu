@@ -66,21 +66,114 @@ public class Graph {
         });
         if (size == k){
             Node start = tmp.firstElement();
+            Node startAfter = tmp.get(1);
+            Node startAfterAfter = tmp.get(2);
             Node end = tmp.lastElement();
             Node beforeEnd = tmp.get(tmp.size() - 1 - 1);
+            Node beforeBeforeEnd = tmp.get(tmp.size() -1 - 1 - 1);
             if((end.getX() == start.getX() - 1 || end.getX() == start.getX() + 1) && end.getY() == start.getY() ){
-                if (beforeEnd.getY() == end.getY()){
+
+                if(start.getColor() == Color.WHITE){
+                    if(startAfter.getY() == start.getY()){
+                       if(end.getColor() == Color.BLACK){
+                            if(beforeEnd.getY() == end.getY())
+                                return false;
+                            else {
+                                tmp.forEach(y->{
+                                    x+= y.printNode();
+                                });
+                            }
+                       }
+                       else{
+                           if(startAfterAfter.getY() == startAfter.getY()){
+                               if(beforeEnd.getY() == end.getY())
+                                   return false;
+                               else{
+                                   tmp.forEach(y->{
+                                       x+= y.printNode();
+                                   });
+                               }
+                           }
+                           else{
+                               tmp.forEach(y->{
+                                   x+= y.printNode();
+                               });
+                           }
+                       }
+                    }
+                }
+                else if(start.getColor() == Color.BLACK){
+                    if(start.getY() == startAfter.getY())
+                        return false;
+                    else{
+                        if(start.getX() == startAfterAfter.getX() && end.getY() == beforeEnd.getY()){
+                            tmp.forEach(y->{
+                                x+= y.printNode();
+                            });
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                }
+                else{
                     tmp.forEach(y->{
                         x+= y.printNode();
                     });
                 }
             }
             else if((end.getY() == start.getY() -1 || end.getY() == start.getY() +1 ) && end.getX() == start.getX()){
-               if(beforeEnd.getX() == end.getX()){
-                   tmp.forEach(y->{
-                       x+= y.printNode();
-                   });
-               }
+
+                if(start.getColor() == Color.WHITE){
+                    if(startAfter.getX() == start.getX()){
+                        if(end.getColor() == Color.BLACK){
+                            if(beforeEnd.getX() == end.getX())
+                                return false;
+                            else{
+                                tmp.forEach(y->{
+                                    x+= y.printNode();
+                                });
+                            }
+                        }
+                        else{
+                            if(startAfterAfter.getX() == startAfter.getX()){
+                                if(beforeEnd.getX() == end.getX())
+                                    return false;
+                                else{
+                                    tmp.forEach(y->{
+                                        x+= y.printNode();
+                                    });
+                                }
+                            }
+
+                            else{
+                                tmp.forEach(y->{
+                                    x+= y.printNode();
+                                });
+                            }
+                        }
+                    }
+                }
+                else if(start.getColor() == Color.BLACK){
+                    if(start.getX() == startAfter.getX())
+                        return false;
+                    else {
+                        if(start.getY() == startAfter.getY() && end.getX() == beforeEnd.getX()){
+                            tmp.forEach(y->{
+                                x+= y.printNode();
+                            });
+                        }
+                        else{
+                            boolean x = false;
+                            return x;
+                        }
+                    }
+                }
+                else{
+                    tmp.forEach(y->{
+                        x+= y.printNode();
+                    });
+                }
             }
         }
         if(x == ""){

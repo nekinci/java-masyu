@@ -7,7 +7,6 @@ public class Main {
         Game game = new Game(6);
         Graph graph = game.getGraph();
         long end = System.nanoTime();
-
         System.out.println("Saniye: "+ TimeUnit.SECONDS.convert(end-start, TimeUnit.NANOSECONDS) + " MS: "+ TimeUnit.MILLISECONDS.convert((end-start),TimeUnit.NANOSECONDS));
     }
 
