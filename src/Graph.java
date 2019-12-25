@@ -6,7 +6,7 @@ import java.util.*;
 
 public class Graph {
     private HashMap<Node, ArrayList<Node>> nodes;
-    private int n;
+    private int n, k;
     private BufferedWriter writer;
    public Graph(int n){
        this.n = n;
@@ -38,18 +38,7 @@ public class Graph {
        return visited;
    }
 
-   public void visitedYazdir(HashMap<Node, Boolean> visited){
-       String x = "";
-       for (Map.Entry item: visited.entrySet()){
-            boolean b = (Boolean) item.getValue();
-            if(b){
-                Node node = (Node) item.getKey();
-                x+=node.printNode()+"->";
-            }
-       }
 
-       System.out.println(x);
-   }
     String x = "";
 
    public void yazdir(Stack<Node> st){
@@ -75,7 +64,7 @@ public class Graph {
         tmp.forEach(y->{
             size = y.getColor() != Color.EMPTY? size+1: size;
         });
-        if (size == 9){
+        if (size == k){
             Node start = tmp.firstElement();
             Node end = tmp.lastElement();
             Node beforeEnd = tmp.get(tmp.size() - 1 - 1);
@@ -200,8 +189,6 @@ public class Graph {
                                     if(!tmp.empty()) {
                                         Node nodea = tmp.pop();
                                         if (nodea.getY() == nodey.getY()) {
-                                            if (nodex.getY() != nodey.getY())
-                                                continue;
                                             if (item.getY() == nodex.getY())
                                                 continue;
                                             else {
@@ -218,13 +205,16 @@ public class Graph {
                                             }
                                         }
                                         else if (nodea.getX() == nodey.getX()) {
-                                            if(nodex.getX() != nodey.getX())
-                                                continue;
                                             if (item.getX() == nodex.getX())
                                                 continue;
                                             else {
                                                 if(item.getColor() == Color.BLACK){
-                                                    
+                                                    if(nodex.getY() == startNode.getY()){
+                                                        if(item.getX() == startNode.getX())
+                                                            continue;
+                                                        else
+                                                            DFSUtil(item, visited, nodes1);
+                                                    }
                                                 }
                                                 else
                                                     DFSUtil(item, visited, nodes1);
@@ -278,10 +268,10 @@ public class Graph {
        visited.put(startNode, false);
 
    }
-   public void DFS(Node startNode){
+   public void DFS(Node startNode,int k){
         HashMap<Node, Boolean> visited = initVisitStates();
         Stack<Node> nodes = new Stack<>();
-
+        this.k = k;
         DFSUtil(startNode, visited,nodes);
    }
 

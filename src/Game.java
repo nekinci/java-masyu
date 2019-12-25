@@ -19,9 +19,9 @@ public class Game {
         nodes[3][5].setColor(Color.WHITE);
         nodes[4][0].setColor(Color.WHITE);
         nodes[4][2].setColor(Color.WHITE);*/
-       // nodes[0][0].setColor(Color.BLACK);
+      //  nodes[0][0].setColor(Color.BLACK);
         //nodes[1][2].setColor(Color.WHITE);
-        nodes[0][1].setColor(Color.BLACK);
+        /*nodes[0][1].setColor(Color.BLACK);
         nodes[0][4].setColor(Color.WHITE);
         nodes[2][3].setColor(Color.WHITE);
         nodes[2][4].setColor(Color.WHITE);
@@ -29,12 +29,36 @@ public class Game {
         nodes[3][2].setColor(Color.BLACK);
         nodes[4][1].setColor(Color.WHITE);
         nodes[5][1].setColor(Color.WHITE);
+        nodes[4][5].setColor(Color.WHITE);*/
+
+        /*nodes[0][0].setColor(Color.BLACK);
+        nodes[0][1].setColor(Color.WHITE);
+        nodes[0][2].setColor(Color.BLACK);
+        nodes[0][4].setColor(Color.WHITE);
+        nodes[1][3].setColor(Color.WHITE);
+        nodes[3][5].setColor(Color.BLACK);
+        nodes[4][2].setColor(Color.WHITE);
+        nodes[5][0].setColor(Color.BLACK);
+        nodes[5][3].setColor(Color.WHITE);*/
+
+        nodes[0][5].setColor(Color.BLACK);
+        nodes[1][3].setColor(Color.WHITE);
+        nodes[1][2].setColor(Color.BLACK);
+        nodes[4][0].setColor(Color.WHITE);
+        nodes[4][2].setColor(Color.WHITE);
+        nodes[4][4].setColor(Color.BLACK);
         nodes[4][5].setColor(Color.WHITE);
 
         graph = new Graph(n);
-
+        int k = 0;
+        for(int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++) {
+                if(nodes[i][j].getColor() != Color.EMPTY)
+                    k++;
+            }
+        }
         toGraphImplementation();
-        graph.DFS(nodes[0][1]);
+        graph.DFS(nodes[1][2], k);
 
         System.out.println(graph.count(nodes[0][1]));
     }
