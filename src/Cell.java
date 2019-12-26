@@ -8,10 +8,16 @@ public class Cell extends JPanel {
 
     private BufferedImage BG_IMAGE;
     private BufferedImage LINE_IMAGE;
+    private String text;
     public void setImage(BufferedImage img){
         BG_IMAGE = img;
+
     }
-    public void setLineImage(BufferedImage img) { LINE_IMAGE = img; }
+    public void setLineImage(BufferedImage img,String text)
+    {
+        LINE_IMAGE = img;
+        this.text = text;
+    }
 
     public Cell(){
         setBorder(new LineBorder(Color.BLACK));
@@ -21,7 +27,7 @@ public class Cell extends JPanel {
     public void paint(Graphics g) {
         super.paint(g);
         g.drawImage(BG_IMAGE,(this.getWidth() - 64) / 2,(this.getHeight() - 64) / 2,this);
-        g.drawImage(LINE_IMAGE,(this.getWidth() - 64) / 2,(this.getHeight() - 64) / 2,this);
-
+        if(text != null)
+            g.drawString(text,this.getWidth() - 15 , this.getHeight() - 15);
     }
 }

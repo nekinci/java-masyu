@@ -8,6 +8,7 @@ public class Graph {
     private HashMap<Node, ArrayList<Node>> nodes;
     private int n, k;
     private BufferedWriter writer;
+    private Stack<Node> solution;
    public Graph(int n){
        this.n = n;
        nodes = new HashMap<>();
@@ -173,6 +174,7 @@ public class Graph {
                     tmp.forEach(y->{
                         x+= y.printNode();
                     });
+
                 }
             }
         }
@@ -180,29 +182,22 @@ public class Graph {
         }
         else{
             System.out.println(x);
+            return true;
         }
 
         return false;
     }
 
 
-    public void check(Stack<Node> st){
-        Stack<Node> tmp = (Stack<Node>) st.clone();
-
-        for (int i = 0; i < tmp.size(); i++){
-            Node node = tmp.get(i);
-        }
-
-    }
 
    public void DFSUtil(Node startNode,HashMap<Node, Boolean> visited, Stack<Node> nodes1){
        ArrayList<Node> neighbours = (ArrayList<Node>) nodes.get(startNode);
        visited.put(startNode, true);
-       //visitedYazdir(visited);
        nodes1.push(startNode);
        Stack<Node> tmp = (Stack<Node>) nodes1.clone();
+
        //yazdir(nodes1);
-        checkSolution(nodes1);
+       if(checkSolution(nodes1)) solution =(Stack<Node>) nodes1.clone();
        for (Node item: neighbours ){
            if(!visited.get(item)) {
 
@@ -361,11 +356,12 @@ public class Graph {
        visited.put(startNode, false);
 
    }
-   public void DFS(Node startNode,int k){
+   public Stack<Node> DFS(Node startNode,int k){
         HashMap<Node, Boolean> visited = initVisitStates();
         Stack<Node> nodes = new Stack<>();
         this.k = k;
         DFSUtil(startNode, visited,nodes);
+        return solution;
    }
 
    public int count(Node node){

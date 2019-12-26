@@ -13,15 +13,16 @@ public class Game {
                 nodes[i][j] = new Node(i,j,Color.EMPTY);
             }
         }
-        /*nodes[0][2].setColor(Color.BLACK);
+
+        nodes[0][2].setColor(Color.BLACK);
         nodes[1][5].setColor(Color.WHITE);
         nodes[2][0].setColor(Color.WHITE);
         nodes[3][3].setColor(Color.BLACK);
         nodes[3][5].setColor(Color.WHITE);
         nodes[4][0].setColor(Color.WHITE);
-        nodes[4][2].setColor(Color.WHITE);*/
-      //  nodes[0][0].setColor(Color.BLACK);
-        //nodes[1][2].setColor(Color.WHITE);
+        nodes[4][2].setColor(Color.WHITE);
+       /* nodes[0][0].setColor(Color.BLACK);
+        nodes[1][2].setColor(Color.WHITE);
         nodes[0][1].setColor(Color.BLACK);
         nodes[0][4].setColor(Color.WHITE);
         nodes[2][3].setColor(Color.WHITE);
@@ -30,7 +31,7 @@ public class Game {
         nodes[3][2].setColor(Color.BLACK);
         nodes[4][1].setColor(Color.WHITE);
         nodes[5][1].setColor(Color.WHITE);
-        nodes[4][5].setColor(Color.WHITE);
+        nodes[4][5].setColor(Color.WHITE);*/
 
         /*nodes[0][0].setColor(Color.BLACK);
         nodes[0][1].setColor(Color.WHITE);
@@ -59,9 +60,9 @@ public class Game {
             }
         }
         toGraphImplementation();
-        Stack<Node> solutionWays = graph.DFS(nodes[0][0], k);
+        Stack<Node> solutionWays = graph.DFS(nodes[1][5], k);
         Screen scr = new Screen(nodes);
-
+        scr.solve(solutionWays);
 
     }
 
@@ -84,6 +85,7 @@ public class Game {
                 if(isNeighbour(nodes[i][j], nodes[k][l]))
                     graph.addEdge(nodes[i][j], nodes[k][l]);
             }
+
         }
 
     }
