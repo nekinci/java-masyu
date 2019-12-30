@@ -301,6 +301,7 @@ public class Graph {
                                                         if(item.getX() == startNode.getX())
                                                             continue;
                                                         else
+
                                                             DFSUtil(item, visited, nodes1);
                                                     }
                                                 }

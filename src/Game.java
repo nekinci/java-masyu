@@ -21,9 +21,9 @@ public class Game {
         nodes[3][5].setColor(Color.WHITE);
         nodes[4][0].setColor(Color.WHITE);
         nodes[4][2].setColor(Color.WHITE);
-       /* nodes[0][0].setColor(Color.BLACK);
-        nodes[1][2].setColor(Color.WHITE);
-        nodes[0][1].setColor(Color.BLACK);
+       // nodes[0][0].setColor(Color.BLACK);
+       // nodes[1][2].setColor(Color.WHITE);
+        /*nodes[0][1].setColor(Color.BLACK);
         nodes[0][4].setColor(Color.WHITE);
         nodes[2][3].setColor(Color.WHITE);
         nodes[2][4].setColor(Color.WHITE);
@@ -60,9 +60,10 @@ public class Game {
             }
         }
         toGraphImplementation();
-        Stack<Node> solutionWays = graph.DFS(nodes[1][5], k);
-        Screen scr = new Screen(nodes);
-        scr.solve(solutionWays);
+        Stack<Node> solutionWays = graph.DFS(nodes[0][2], k);
+        Screen scr = new Screen(nodes,n,"Çözülmemiş Hali");
+        Screen scr1 = new Screen(nodes,n,"Çözülmüş Hali");
+        scr1.solve(solutionWays);
 
     }
 
