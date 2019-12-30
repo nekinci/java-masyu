@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.util.Stack;
 
 public class Game {
@@ -61,9 +62,15 @@ public class Game {
         }
         toGraphImplementation();
         Stack<Node> solutionWays = graph.DFS(nodes[0][2], k);
-        Screen scr = new Screen(nodes,n,"Çözülmemiş Hali");
-        Screen scr1 = new Screen(nodes,n,"Çözülmüş Hali");
-        scr1.solve(solutionWays);
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Screen scr = new Screen(nodes,n,"Çözülmemiş Hali");
+                Screen scr1 = new Screen(nodes,n,"Çözülmüş Hali");
+                scr1.solve(solutionWays);
+                scr1.setLocation(scr.getX()+scr.getWidth(),scr.getY());
+            }
+        });
 
     }
 

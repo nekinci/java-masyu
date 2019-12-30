@@ -70,7 +70,6 @@ public class Screen extends JFrame   {
                 g.drawLine(p.x+pwidth/2,p.y+pheight/2,p1.x+p1width/2,p.y+pheight/2);
             }
             if(solutions.get(i).getY() == solutions.get(i+1).getY()){
-                System.out.println(p1height);
                 g.drawLine(p.x+pwidth/2,p.y+pheight/2,p1.x+p1width/2,p1.y+p1height/2);
             }
         }
@@ -94,10 +93,13 @@ public class Screen extends JFrame   {
 
     public void solve(Stack<Node> nodes){
         this.solutions = nodes;
-        for(int i = 0; i < nodes.size(); i++){
-           // cells[nodes.get(i).getX()][nodes.get(i).getY()].setLineImage(null,String.valueOf(i));
+
+        if(nodes == null){
+            JOptionPane.showMessageDialog(this,"Çözüm Yok","Bilgilendirme",JOptionPane.ERROR_MESSAGE);
+            return;
         }
         this.repaint();
+        this.validate();
     }
 
 }
