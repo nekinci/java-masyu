@@ -51,6 +51,7 @@ public class Game {
         nodes[4][2].setColor(Color.WHITE);
         nodes[4][4].setColor(Color.BLACK);
         nodes[4][5].setColor(Color.WHITE);*/
+        
 
         graph = new Graph(n);
         int k = 0;
